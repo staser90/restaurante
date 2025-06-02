@@ -575,30 +575,42 @@
           <div class="col-lg-4 reservation-img" style="background-image: url('{% static 'assets/img/reservation.jpg' %}');"></div>
 
           <div class="col-lg-8 d-flex align-items-center reservation-form-bg" data-aos="fade-up" data-aos-delay="200">
-            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form">
+
+            <form action="{% url 'reservas' %}#book-a-table" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
+              {% if messages %}
+
+                  {% for message in messages %}
+                      <div class="alert alert-info">
+                          {{message}}
+                      </div>
+                  {% endfor %}
+
+                {% endif %}
+
               <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                  <input type="text" name="nome" class="form-control" id="nome" placeholder="Seu Nome" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Seu Email" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required="">
+                  <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Seu Telefone" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="date" name="date" class="form-control" id="date" placeholder="Date" required="">
+                  <input type="date" name="data" class="form-control" id="data" placeholder="Data" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="time" class="form-control" name="time" id="time" placeholder="Time" required="">
+                  <input type="time" class="form-control" name="tempo" id="tempo" placeholder="Hora" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="number" class="form-control" name="people" id="people" placeholder="# of people" required="">
+                  <input type="number" class="form-control" name="pessoas" id="pessoas" placeholder="# of people" required="">
                 </div>
               </div>
 
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                <textarea class="form-control" name="mensagem" id="mensagem" rows="5" placeholder="Menssagem"></textarea>
               </div>
 
               <div class="text-center mt-3">
@@ -896,7 +908,24 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{% url 'contacto' %}#contact" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
+
+              <!--alerta inicio-->
+
+                {% if messages %}
+
+                  {% for message in messages %}
+                      <div class="alert alert-info">
+                          {{message}}
+                      </div>
+                  {% endfor %}
+
+                {% endif %}
+
+              
+
+              <!--alerta fim-->
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="nome" class="form-control" id="nome" placeholder="Seu Nome" required="">
@@ -906,7 +935,7 @@
                 </div>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="Assunto" id="Assunto" placeholder="Assunto" required="">
+                <input type="text" class="form-control" name="assunto" id="assunto" placeholder="assunto" required="">
               </div>
               <div class="form-group mt-3">
                 <textarea class="form-control" name="mensagem" id="mensagem" placeholder="Mensagem" required=""></textarea>
@@ -998,7 +1027,6 @@
 
   <!-- Vendor JS Files -->
 <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
 <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
 <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
