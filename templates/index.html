@@ -578,15 +578,16 @@
 
             <form action="{% url 'reservas' %}#book-a-table" method="post" role="form" class="php-email-form">
               {% csrf_token %}
+             
               {% if messages %}
+                {% for message in messages %}
+                  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
 
-                  {% for message in messages %}
-                      <div class="alert alert-info">
-                          {{message}}
-                      </div>
-                  {% endfor %}
-
-                {% endif %}
 
               <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
@@ -605,7 +606,7 @@
                   <input type="time" class="form-control" name="tempo" id="tempo" placeholder="Hora" required="">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                  <input type="number" class="form-control" name="pessoas" id="pessoas" placeholder="# of people" required="">
+                  <input type="number" class="form-control" name="pessoas" id="pessoas" placeholder="Numero de pessoas" required="">
                 </div>
               </div>
 
@@ -820,7 +821,7 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="{% static 'assets/img/neyla.png' %}" class="testimonial-img" alt="">
+                <img src="{% static 'assets/img/neyla.jpg' %}" class="testimonial-img" alt="">
                 <h3>Neyla Almeida</h3>
                 <h4>Recursos Humanos</h4>
                 <div class="stars">
@@ -913,15 +914,14 @@
 
               <!--alerta inicio-->
 
-                {% if messages %}
-
-                  {% for message in messages %}
-                      <div class="alert alert-info">
-                          {{message}}
-                      </div>
-                  {% endfor %}
-
-                {% endif %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
 
               
 
@@ -976,7 +976,7 @@
           <div>
             <h4>Contacto</h4>
             <p>
-              <strong>Telefone:</strong> <span>+1 5589 55488 55</span><br>
+              <strong>Telefone:</strong> <span>+238 2421774</span><br>
               <strong>Email:</strong> <span>neylagomes@hotmail.com</span><br>
             </p>
           </div>

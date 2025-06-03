@@ -1,1 +1,1 @@
-web: gunicorn cafe.wsgi
+web: gunicorn restaurante.wsgi

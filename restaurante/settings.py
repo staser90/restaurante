@@ -124,6 +124,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # URL para aceder aos ficheiros de mídia (uploads de utilizador)
 MEDIA_URL = '/media/'
 
@@ -140,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #MENSAGEM DE ALERTA 
 
 MESSAGE_TAGS = {
-    
+
     constants.DEBUG: 'alert-danger',
     constants.ERROR: 'alert-danger',
     constants.SUCCESS: 'alert-success',
