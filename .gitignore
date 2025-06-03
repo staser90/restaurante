@@ -1,0 +1,28 @@
+# Ficheiro .gitignore para Django
+
+# Ambiente virtual
+code/
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Base de dados SQLite local
+*.sqlite3
+
+# Ficheiros de configuração sensíveis
+.env
+
+# Static files gerados
+/staticfiles/
+staticfiles/
+
+# VS Code, PyCharm, outros IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Migrations desnecessárias
+**/migrations/__pycache__/
