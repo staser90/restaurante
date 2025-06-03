@@ -144,6 +144,8 @@ MEDIA_URL = '/media/'
 # Diretório no disco onde os ficheiros de mídia serão guardados
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 # Default primary key field type
